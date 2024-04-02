@@ -7,7 +7,6 @@ import (
 	"strconv"
 	"github.com/bk167465/Go_Tutorial/Go-bookstore/pkg/models"
 	"github.com/bk167465/Go_Tutorial/Go-bookstore/pkg/utils"
-	"github.com/bk167465/Go_tutorial/Go-bookstore/pkg/utils"
 	"github.com/gorilla/mux"
 )
 
@@ -28,7 +27,7 @@ func GetBookById(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println("error while parsing id")
 	}
-	bookDetails, _ := models.GetBookByID(ID)
+	bookDetails, _ := models.GetBookById(ID)
 	res, _ := json.Marshal(bookDetails)
 	w.Header().Set("Content-Type", "pkglication/json")
 	w.WriteHeader(http.StatusOK)
@@ -68,7 +67,7 @@ func UpdateBook(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println("Error while parsing")
 	}
-	bookDetails, db := models.GetBookByID(ID)
+	bookDetails, db := models.GetBookById(ID)
 	if updateBook.Name != "" {
 		bookDetails.Name = updateBook.Name
 	}

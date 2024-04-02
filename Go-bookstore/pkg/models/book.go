@@ -20,7 +20,7 @@ func init() {
 	db.AutoMigrate(&Book{})
 }
 
-func (b *Book) createBook() *Book {
+func (b *Book) CreateBook() *Book {
 	db.NewRecord(b)
 	db.Create(&b)
 	return b
@@ -34,7 +34,7 @@ func GetAllBooks() []Book {
 
 func GetBookById(Id int64) (*Book, *gorm.DB) {
     var getBook Book
-	db := db.Where("ID=?", Id).Find(getBook)
+	db := db.Where("ID=?", Id).Find(&getBook)
 	return &getBook, db
 }
 
